@@ -1,0 +1,104 @@
+---
+/**
+ * Layout Principal - Mycelium
+ * Define la estructura base, fuentes y el fondo ambiental del sitio.
+ */
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Mycelium | Inteligencia Geoespacial</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@1,400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="aurora-bg" aria-hidden="true"></div>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  /* Variables Globales */
+  :root {
+    --bg-color: #0b0a0d;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1a1;
+    --accent-purple: #5c3cf5;
+    --font-main: "Inter", system-ui, sans-serif;
+    --font-accent: "Playfair Display", serif;
+  }
+
+  /* Reset y Base */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    /* Crucial para que nada se escape */
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Fondo Ambiental (Aurora) */
+  .aurora-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 800px;
+    background: radial-gradient(
+      circle at 50% -20%,
+      /* Centrado arriba */ rgba(38, 40, 49, 1) 0%,
+      rgba(38, 40, 49, 0.4) 35%,
+      rgba(11, 10, 13, 0) 70%
+    );
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  /* Clases de Utilidad */
+  .logo-font {
+    font-family: var(--font-accent);
+    font-style: italic;
+  }
+
+  /* Ajuste para pantallas grandes */
+  @media (min-width: 1200px) {
+    .aurora-bg {
+      height: 400px;
+      background: radial-gradient(
+        circle at 50% -10%,
+        rgba(38, 40, 49, 1) 0%,
+        rgba(38, 40, 49, 0.4) 40%,
+        rgba(11, 10, 13, 0) 80%
+      );
+    }
+  }
+</style>

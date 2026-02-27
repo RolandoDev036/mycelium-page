@@ -1,0 +1,100 @@
+---
+/**
+ * Hero Component - Mycelium Project
+ * Presentación principal con énfasis en la visualización de datos geoespaciales.
+ */
+---
+
+<section class="hero-container" id="start">
+  <div class="hero-content">
+    <h1 class="hero-title">MYCELIUM</h1>
+
+    <p class="hero-subtitle">
+      Sistema de soporte a la decisión para la expansión de redes de metro
+      mediante inteligencia geoespacial y optimización de grafos.
+    </p>
+
+    <div class="interface-preview">
+      <img
+        src="/imagen_inicio.webp"
+        alt="Vista previa de la interfaz de Mycelium"
+        class="main-interface"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Contenedor Principal */
+  .hero-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 120px 20px 60px 20px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Tipografía */
+  .hero-title {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 40px 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    color: var(--text-secondary, #b0b0b0);
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    max-width: 650px;
+    margin: 0 0 60px 0;
+    line-height: 1.6;
+  }
+
+  /* Visualización de Interfaz */
+  .interface-preview {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+
+  .main-interface {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 98%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 98%);
+  }
+
+  /* Ajustes Responsivos (Desktop) */
+  @media (min-width: 768px) {
+    .hero-container {
+      padding: 160px 40px 80px 40px;
+    }
+
+    .hero-title {
+      margin: 80px 0;
+    }
+
+    .main-interface {
+      border-radius: 24px;
+    }
+  }
+</style>

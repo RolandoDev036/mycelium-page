@@ -1,0 +1,228 @@
+---
+// Organization.astro
+const features = [
+  {
+    id: "visualizacion",
+    title: "Validación Cartográfica",
+    description:
+      "Mapas interactivos con clústers de demanda y trazado de rutas óptimas listos para la validación técnica en QGIS.",
+    img: "/visualizacion.webp",
+  },
+  {
+    id: "entregables",
+    title: "Entregables de Sistema",
+    description:
+      "Exportación automática de archivos GeoPackage (.gpkg) y reportes ejecutivos PDF con métricas de población atendida.",
+    img: "/reportes.webp",
+  },
+  {
+    id: "transparencia",
+    title: "Instrumento de Transparencia",
+    description:
+      "Evidencia cuantitativa auditable que fundamenta inversiones en infraestructura basándose en datos oficiales del INEGI.",
+    img: "/mapa_web.webp",
+  },
+];
+---
+
+<section class="org-container" id="results">
+  <div class="org-header">
+    <h2 class="org-title">Resultados de alta precisión</h2>
+    <p class="org-subtitle">
+      Transformamos semanas de procesamiento manual en reportes listos para la
+      gestión pública.
+    </p>
+  </div>
+
+  <div class="org-content">
+    <div class="features-list">
+      {
+        features.map((f, index) => (
+          <div
+            class={`feature-item ${index === 0 ? "active" : ""}`}
+            data-org={f.id}
+          >
+            <h3>{f.title}</h3>
+            <p>{f.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="visual-preview">
+      {
+        features.map((f, index) => (
+          <img
+            src={f.img}
+            alt={f.title}
+            class={`preview-img ${index === 0 ? "active" : ""}`}
+            id={`img-org-${f.id}`}
+          />
+        ))
+      }
+      <div class="overlay-glow"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  {
+    // Bloque de encapsulamiento
+    const container = document.querySelector(".org-container");
+    if (container) {
+      const orgItems = container.querySelectorAll(".feature-item[data-org]");
+      const orgImgs = container.querySelectorAll(
+        '.preview-img[id^="img-org-"]',
+      );
+
+      orgItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          const featureId = item.getAttribute("data-org");
+          const targetImg = container.querySelector(`#img-org-${featureId}`);
+
+          if (targetImg) {
+            // Solo removemos 'active' dentro de este contenedor específico
+            orgItems.forEach((i) => i.classList.remove("active"));
+            orgImgs.forEach((img) => img.classList.remove("active"));
+
+            item.classList.add("active");
+            targetImg.classList.add("active");
+          }
+        });
+      });
+
+      // Forzar estado inicial al cargar para evitar el cuadro negro
+      window.addEventListener("load", () => {
+        const firstImg = orgImgs[0];
+        const firstItem = orgItems[0];
+        if (firstImg && firstItem) {
+          firstImg.classList.add("active");
+          firstItem.classList.add("active");
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  .org-container {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .org-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .org-title {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+
+  .org-subtitle {
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+  }
+
+  .org-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Espejo del anterior */
+    gap: 60px;
+    align-items: center;
+  }
+
+  .visual-preview {
+    position: sticky;
+    top: 120px;
+    height: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #16171a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .preview-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1; /* Nivel base */
+    transition: opacity 0.4s ease;
+  }
+
+  .preview-img.active {
+    opacity: 1;
+    z-index: 2; /* Sube al frente */
+  }
+
+  .overlay-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      -45deg,
+      rgba(92, 60, 245, 0.1) 0%,
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-item {
+    padding: 32px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .feature-item.active {
+    background: #16171a;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .feature-item h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+  }
+
+  .feature-item.active h3 {
+    color: #ffffff;
+  }
+
+  .feature-item p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  .feature-item.active p {
+    opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .org-content {
+      grid-template-columns: 1fr;
+    }
+    .visual-preview {
+      height: 300px;
+    }
+
+    .org-title {
+      font-size: 2rem;
+    }
+  }
+</style>

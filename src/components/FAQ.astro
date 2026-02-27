@@ -1,0 +1,155 @@
+---
+// FAQ.astro
+const faqs = [
+  {
+    question: "¿En qué ciudades se puede utilizar Mycelium?",
+    answer:
+      "El sistema permite una selección modular; puede procesar la totalidad de una metrópoli o restringir el análisis a un subconjunto específico de municipios del territorio nacional utilizando el Marco Geoestadístico de INEGI.",
+  },
+  {
+    question: "¿Qué algoritmos sustentan la toma de decisiones?",
+    answer:
+      "La toma de decisiones se sustenta en la inteligencia geoespacial mediante el algoritmo HDBSCAN para el agrupamiento poblacional y el algoritmo de Dijkstra para la optimización de trayectorias sobre grafos viales.",
+  },
+  {
+    question: "¿El software sustituye los estudios de ingeniería civil?",
+    answer:
+      "No. Mycelium es estrictamente un sistema de soporte a la decisión (DSS) para la etapa de prefactibilidad geoespacial. No sustituye estudios de ingeniería civil de detalle, mecánica de suelos, trazo geométrico constructivo o impacto ambiental.",
+  },
+  {
+    question: "¿Qué tan actualizados están los datos de análisis?",
+    answer:
+      "Utiliza el Censo de Población y Vivienda 2020 y el DENUE 2025. El sistema prioriza la integridad de la fuente oficial y permite la actualización constante de las bases de datos para mitigar riesgos de obsolescencia.",
+  },
+  {
+    question: "¿Cómo garantiza el sistema la equidad social?",
+    answer:
+      "Actuamos como un garante de justicia social al integrar el Índice de Rezago Social del CONEVAL. Esto permite que el usuario priorice núcleos de demanda en zonas vulnerables que tradicionalmente serían descartadas bajo ópticas puramente comerciales.",
+  },
+];
+---
+
+<section class="faq-container" id="faq">
+  <div class="faq-header">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    <p class="faq-subtitle">
+      Si tienes alguna otra duda, no dudes en contactar con nuestro equipo.
+    </p>
+  </div>
+
+  <div class="faq-list">
+    {
+      faqs.map((faq) => (
+        <details class="faq-item">
+          <summary>
+            {faq.question}
+            <span class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq-container {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .faq-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .faq-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+
+  summary {
+    list-style: none;
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item:hover summary {
+    color: var(--accent-purple);
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+    opacity: 0.5;
+  }
+
+  .faq-item[open] .icon {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: var(--accent-purple);
+  }
+
+  .faq-answer {
+    padding-bottom: 32px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
