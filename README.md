@@ -30,18 +30,13 @@ El diseño de Mycelium no solo es técnico, sino que se alinea con normativas vi
 - **LGMSV**: Aplicación del Artículo 35 para priorizar la jerarquía de movilidad.
 - **ODS 11.2**: Contribución al acceso universal a transporte seguro, sostenible y equitativo.
 
-## 📁 Estructura del Repositorio
-
-- `/src`: Código fuente del componente de visualización (Astro).
-- `/public`: Recursos estáticos, incluyendo el video demostrativo de la interfaz.
-- `/data`: Estructuras GeoPackage y archivos `.xlsx` utilizados en el proyecto.
 
 ## 👨‍💻 Autor
 
 **Rolando**
 
 - Estudiante de **Tecnologías de la Información**.
-- **Metropolitan University of Monterrey**.
+- **Universidad Metropolitana de Monterrey**.
 
 ---
 

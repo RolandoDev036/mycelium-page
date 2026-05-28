@@ -3,72 +3,104 @@
 const features = [
   {
     id: "visualizacion",
-    title: "Validación Cartográfica",
+    title: "Mapa interactivo de clusters",
     description:
-      "Mapas interactivos con clústers de demanda y trazado de rutas óptimas listos para la validación técnica en QGIS.",
+      "8 modos de visualización temática sobre la ZMM completa. Selecciona cualquier núcleo para ver población atendida, rezago social y distancia al metro.",
     img: "/visualizacion.webp",
+    tag: "Leaflet · GeoJSON",
   },
   {
     id: "entregables",
-    title: "Entregables de Sistema",
+    title: "Reporte ejecutivo PDF",
     description:
-      "Exportación automática de archivos GeoPackage (.gpkg) y reportes ejecutivos PDF con métricas de población atendida.",
+      "Generación automática de reportes con métricas de población atendida, índice de prioridad y rezago social. Listo para llevar a una reunión de gobierno.",
     img: "/reportes.webp",
+    tag: "PDF · Exportación automática",
   },
   {
     id: "transparencia",
-    title: "Instrumento de Transparencia",
+    title: "Archivos GeoPackage",
     description:
-      "Evidencia cuantitativa auditable que fundamenta inversiones en infraestructura basándose en datos oficiales del INEGI.",
-    img: "/mapa_web.webp",
+      "Exportación de geometrías y atributos en formato estándar compatible con QGIS y cualquier SIG profesional. Trazabilidad total del análisis.",
+    img: "/exportacion.webp",
+    tag: "GeoPackage · QGIS",
   },
 ];
 ---
 
-<section class="org-container" id="results">
-  <div class="org-header">
-    <h2 class="org-title">Resultados de alta precisión</h2>
-    <p class="org-subtitle">
-      Transformamos semanas de procesamiento manual en reportes listos para la
-      gestión pública.
-    </p>
-  </div>
-
-  <div class="org-content">
-    <div class="features-list">
-      {
-        features.map((f, index) => (
-          <div
-            class={`feature-item ${index === 0 ? "active" : ""}`}
-            data-org={f.id}
-          >
-            <h3>{f.title}</h3>
-            <p>{f.description}</p>
-          </div>
-        ))
-      }
+<section class="org-section" id="deliverables">
+  <div class="container">
+    <div class="org-header">
+      <p class="section-label">Entregables</p>
+      <h2 class="org-title">
+        Evidencia lista para<br />una reunión de gobierno
+      </h2>
+      <p class="org-subtitle">
+        Mycelium no entrega datos crudos. Entrega argumentos.
+      </p>
     </div>
 
-    <div class="visual-preview">
-      {
-        features.map((f, index) => (
-          <img
-            src={f.img}
-            alt={f.title}
-            class={`preview-img ${index === 0 ? "active" : ""}`}
-            id={`img-org-${f.id}`}
-          />
-        ))
-      }
-      <div class="overlay-glow"></div>
+    <div class="org-grid">
+      <!-- Lista de features -->
+      <div class="features-list">
+        {
+          features.map((f, index) => (
+            <div
+              class={`feature-item ${index === 0 ? "active" : ""}`}
+              data-org={f.id}
+            >
+              <div class="feature-text">
+                <h3 class="feature-title">{f.title}</h3>
+                <p class="feature-desc">{f.description}</p>
+                <span class="feature-tag">{f.tag}</span>
+              </div>
+              <svg
+                class="feature-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Preview visual -->
+      <div class="visual-preview">
+        <div class="browser-bar">
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+        </div>
+        <div class="preview-window">
+          {
+            features.map((f, index) => (
+              <img
+                src={f.img}
+                alt={f.title}
+                class={`preview-img ${index === 0 ? "active" : ""}`}
+                id={`img-org-${f.id}`}
+              />
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
   {
-    // Bloque de encapsulamiento
-    const container = document.querySelector(".org-container");
+    const container = document.querySelector(".org-section");
     if (container) {
       const orgItems = container.querySelectorAll(".feature-item[data-org]");
       const orgImgs = container.querySelectorAll(
@@ -79,22 +111,18 @@ const features = [
         item.addEventListener("mouseenter", () => {
           const featureId = item.getAttribute("data-org");
           const targetImg = container.querySelector(`#img-org-${featureId}`);
-
           if (targetImg) {
-            // Solo removemos 'active' dentro de este contenedor específico
             orgItems.forEach((i) => i.classList.remove("active"));
             orgImgs.forEach((img) => img.classList.remove("active"));
-
             item.classList.add("active");
             targetImg.classList.add("active");
           }
         });
       });
 
-      // Forzar estado inicial al cargar para evitar el cuadro negro
       window.addEventListener("load", () => {
-        const firstImg = orgImgs[0];
-        const firstItem = orgItems[0];
+        const firstImg = orgImgs[0] as HTMLElement;
+        const firstItem = orgItems[0] as HTMLElement;
         if (firstImg && firstItem) {
           firstImg.classList.add("active");
           firstItem.classList.add("active");
@@ -105,124 +133,195 @@ const features = [
 </script>
 
 <style>
-  .org-container {
-    padding: 100px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  .org-section {
+    padding: 80px 0;
   }
 
+  /* Header */
   .org-header {
-    text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
 
   .org-title {
-    font-size: 3rem;
-    font-weight: 800;
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
   }
 
   .org-subtitle {
-    color: var(--text-secondary);
-    max-width: 800px;
-    margin: 20px auto 0;
-    line-height: 1.6;
+    font-size: 15px;
+    color: var(--color-text-secondary);
   }
 
-  .org-content {
+  /* Grid principal */
+  .org-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Espejo del anterior */
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
   }
+
+  /* Lista de features */
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 20px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .feature-item:hover,
+  .feature-item.active {
+    background: var(--color-bg-card);
+    border-color: var(--color-border);
+  }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .feature-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    transition: color 0.25s ease;
+    margin: 0;
+  }
+
+  .feature-item.active .feature-title,
+  .feature-item:hover .feature-title {
+    color: var(--color-text-primary);
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    display: none;
+  }
+
+  .feature-item.active .feature-desc {
+    display: block;
+  }
+
+  .feature-tag {
+    display: none;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--color-bg-muted);
+    color: var(--color-text-muted);
+    align-self: flex-start;
+  }
+
+  .feature-item.active .feature-tag {
+    display: inline-block;
+  }
+
+  .feature-arrow {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .feature-item.active .feature-arrow,
+  .feature-item:hover .feature-arrow {
+    opacity: 1;
+  }
+
+  /* Preview visual */
+  /* Reemplaza estos estilos en Organization.astro */
 
   .visual-preview {
-    position: sticky;
-    top: 120px;
-    height: 450px;
-    border-radius: 24px;
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: #16171a;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 0.5px solid var(--color-border);
+    /* Sombra sutil para dar profundidad */
+    box-shadow: 0 8px 32px rgba(38, 49, 55, 0.08);
+  }
+
+  .browser-bar {
+    background: #e4e4e6;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* Barra ligeramente más alta para que se vea más real */
+    min-height: 36px;
+  }
+
+  .browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Tres colores reales de macOS */
+  .browser-dot:nth-child(1) {
+    background: #ff5f57;
+  }
+  .browser-dot:nth-child(2) {
+    background: #ffbd2e;
+  }
+  .browser-dot:nth-child(3) {
+    background: #28c840;
+  }
+
+  .preview-window {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-bg-dark);
   }
 
   .preview-img {
     position: absolute;
-    height: 100%;
-    width: 100%;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    /* Cover mantiene proporciones, top muestra la parte superior de la UI */
     object-fit: cover;
+    object-position: top left;
     opacity: 0;
-    z-index: 1; /* Nivel base */
     transition: opacity 0.4s ease;
+    z-index: 1;
   }
 
   .preview-img.active {
     opacity: 1;
-    z-index: 2; /* Sube al frente */
+    z-index: 2;
   }
 
-  .overlay-glow {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      -45deg,
-      rgba(92, 60, 245, 0.1) 0%,
-      transparent 60%
-    );
-    pointer-events: none;
-  }
-
-  .features-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .feature-item {
-    padding: 32px;
-    border-radius: 20px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .feature-item.active {
-    background: #16171a;
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .feature-item h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--text-secondary);
-  }
-
-  .feature-item.active h3 {
-    color: #ffffff;
-  }
-
-  .feature-item p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: 0.6;
-  }
-
-  .feature-item.active p {
-    opacity: 1;
-  }
-
-  @media (max-width: 900px) {
-    .org-content {
-      grid-template-columns: 1fr;
-    }
-    .visual-preview {
-      height: 300px;
+  /* Desktop */
+  @media (min-width: 900px) {
+    .org-grid {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .org-title {
-      font-size: 2rem;
+    .preview-window {
+      height: 400px;
     }
   }
 </style>

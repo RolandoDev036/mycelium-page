@@ -1,0 +1,340 @@
+---
+// Results.astro
+const results = [
+  {
+    rank: "01",
+    cluster: "García_0",
+    municipio: "García",
+    descripcion: "El núcleo de mayor masa poblacional de toda la ZMM. Ciudad dormitorio en explosión demográfica con crecimiento industrial acelerado y cero cobertura de metro.",
+    pob_total: "540,186",
+    distancia: "24.3 km",
+    rezago: "2.78",
+    prioridad: 100,
+    intervencion: "Nueva línea sugerida",
+  },
+  {
+    rank: "02",
+    cluster: "Juárez_0",
+    municipio: "Juárez",
+    descripcion: "Municipio en plena transformación industrial. Alta concentración de trabajadores de parques industriales sin acceso al sistema de transporte masivo.",
+    pob_total: "512,247",
+    distancia: "14.9 km",
+    rezago: "2.50",
+    prioridad: 100,
+    intervencion: "Nueva línea sugerida",
+  },
+  {
+    rank: "03",
+    cluster: "Apodaca_0",
+    municipio: "Apodaca",
+    descripcion: "Capital industrial de Nuevo León. Concentra el mayor número de parques industriales y el aeropuerto internacional, con alta demanda de movilidad pendular.",
+    pob_total: "449,463",
+    distancia: "12.9 km",
+    rezago: "1.74",
+    prioridad: 89.9,
+    intervencion: "Nueva línea sugerida",
+  },
+];
+---
+
+<section class="results-section" id="findings">
+  <div class="container">
+
+    <div class="results-header">
+      <p class="section-label">Hallazgos · ZMM 2025</p>
+      <h2 class="results-title">Los tres núcleos<br />más críticos detectados</h2>
+      <p class="results-subtitle">
+        De 67 agrupamientos analizados en 16 municipios, estos son
+        los casos que demandan atención prioritaria de infraestructura.
+      </p>
+    </div>
+
+    <div class="results-list">
+      {results.map((r) => (
+        <div class="result-card">
+
+          <!-- Número de ranking -->
+          <div class="result-rank">{r.rank}</div>
+
+          <!-- Contenido principal -->
+          <div class="result-body">
+            <div class="result-top">
+              <div>
+                <div class="result-municipio">{r.municipio}</div>
+                <div class="result-cluster">{r.cluster}</div>
+              </div>
+              <span class="result-badge">{r.intervencion}</span>
+            </div>
+            <p class="result-desc">{r.descripcion}</p>
+
+            <!-- Métricas -->
+            <div class="result-metrics">
+              <div class="metric">
+                <span class="metric-value">{r.pob_total}</span>
+                <span class="metric-label">Habitantes en radio de influencia</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric">
+                <span class="metric-value">{r.distancia}</span>
+                <span class="metric-label">Al metro más cercano</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric">
+                <span class="metric-value">{r.rezago}</span>
+                <span class="metric-label">Índice de rezago social</span>
+              </div>
+            </div>
+
+            <!-- Barra de prioridad -->
+            <div class="priority-block">
+              <div class="priority-labels">
+                <span class="priority-text">Índice de prioridad</span>
+                <span class="priority-number">{r.prioridad}</span>
+              </div>
+              <div class="priority-track">
+                <div
+                  class="priority-fill"
+                  style={`width: ${r.prioridad}%`}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Nota metodológica -->
+    <p class="results-note">
+      El índice de prioridad normaliza la población total atendida sobre una meta de referencia de 500,000 habitantes.
+      Datos procesados sobre el Censo 2020 del INEGI y DENUE 2025.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .results-section {
+    padding: 80px 0;
+    background: var(--color-bg-muted);
+  }
+
+  /* Header */
+  .results-header {
+    margin-bottom: 48px;
+  }
+
+  .results-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  .results-subtitle {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    max-width: 480px;
+  }
+
+  /* Lista de resultados */
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Tarjeta */
+  .result-card {
+    background: var(--color-bg-card);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+    align-items: start;
+    transition: border-color 0.2s ease;
+  }
+
+  .result-card:hover {
+    border-color: rgba(38, 49, 55, 0.25);
+  }
+
+  /* Ranking */
+  .result-rank {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    opacity: 0.15;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  /* Body */
+  .result-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .result-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .result-municipio {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+  }
+
+  .result-cluster {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+    font-family: monospace;
+  }
+
+  .result-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--color-bg-dark);
+    color: var(--color-text-inverse);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .result-desc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  /* Métricas */
+  .result-metrics {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 20px;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .metric-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+  }
+
+  .metric-divider {
+    width: 0.5px;
+    height: 40px;
+    background: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  /* Barra de prioridad */
+  .priority-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .priority-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .priority-text {
+    font-size: 11px;
+    color: var(--color-text-muted);
+  }
+
+  .priority-number {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .priority-track {
+    height: 4px;
+    background: var(--color-bg-muted);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .priority-fill {
+    height: 100%;
+    background: var(--color-bg-dark);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  /* Nota */
+  .results-note {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .result-card {
+      padding: 32px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .result-card {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .result-rank {
+      font-size: 1.25rem;
+    }
+
+    .metric-divider {
+      display: none;
+    }
+
+    .metric {
+      min-width: 100%;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    .metric:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

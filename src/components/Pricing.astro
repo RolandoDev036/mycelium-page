@@ -2,297 +2,328 @@
 // Pricing.astro
 ---
 
-<section class="pricing-container" id="pricing">
-  <div class="pricing-header">
-    <h2 class="pricing-title">Inversión en Planeación Estratégica</h2>
-    <p class="pricing-subtitle">
-      Optimización de la inversión pública mediante evidencia cuantitativa,
-      reduciendo la brecha entre la demanda urbana y la infraestructura masiva.
-    </p>
-  </div>
-
-  <div class="pricing-wrapper">
-    <div class="pricing-card">
-      <div class="card-header">
-        <span class="badge">Suscripción Anual</span>
-        <h3 class="plan-name">LICENCIA PROFESIONAL</h3>
-        <p class="plan-description">
-          Optimización del retorno social y financiero de la infraestructura
-          urbana.
-        </p>
-      </div>
-
-      <div class="price-section">
-        <div class="price">
-          <span class="currency">$</span>
-          <span class="amount">75,000</span>
-          <span class="period">/ MXN</span>
-        </div>
-        <p class="billing-info">Pago único anual por instancia de software.</p>
-      </div>
-
-      <button class="btn-disabled" disabled>Próximamente</button>
-
-      <div class="features-list">
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Acceso a datos censales INEGI (Censo 2020)</span>
-        </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Integración de Índice de Rezago Social CONEVAL</span>
-        </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Motor de análisis HDBSCAN y Dijkstra ilimitado</span>
-        </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Exportación de archivos GeoPackage (.gpkg)</span>
-        </div>
-      </div>
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <p class="section-label">Inversión</p>
+      <h2 class="pricing-title">
+        Planeación basada en evidencia,<br />no en intuición
+      </h2>
+      <p class="pricing-subtitle">
+        Dos modalidades para organismos públicos y consultoras especializadas.
+      </p>
     </div>
 
-    <div class="pricing-card featured">
-      <div class="card-header">
-        <span class="badge purple">Venta Total</span>
-        <h3 class="plan-name">ADQUISICIÓN COMPLETA</h3>
-        <p class="plan-description">
-          Propiedad absoluta de la herramienta para implementación privada y
-          soberanía de datos.
-        </p>
+    <div class="pricing-grid">
+      <!-- Licencia Profesional -->
+      <div class="price-card">
+        <div class="price-top">
+          <span class="price-type">Suscripción anual</span>
+          <h3 class="price-name">Licencia Profesional</h3>
+          <p class="price-desc">
+            Para consultoras y equipos técnicos de movilidad urbana.
+          </p>
+        </div>
+
+        <div class="price-amount-block">
+          <span class="price-amount">$180,000</span>
+          <span class="price-period">MXN · Pago anual</span>
+        </div>
+
+        <div class="price-features">
+          <div class="price-feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Motor K-Means y Dijkstra ilimitado</span>
+          </div>
+          <div class="price-feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Exportación GeoPackage y PDF</span>
+          </div>
+          <div class="price-feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Integración nativa INEGI + CONEVAL</span>
+          </div>
+          <div class="price-feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Cobertura nacional</span>
+          </div>
+        </div>
+
+        <div class="price-cta">Próximamente disponible</div>
       </div>
 
-      <div class="price-section">
-        <div class="price">
-          <span class="currency">$</span>
-          <span class="amount">500,000</span>
-          <span class="period">/ MXN</span>
+      <!-- Adquisición Completa -->
+      <div class="price-card price-card--featured">
+        <div class="price-top">
+          <span class="price-type price-type--light">Adquisición total</span>
+          <h3 class="price-name price-name--light">Propiedad Completa</h3>
+          <p class="price-desc price-desc--light">
+            Para organismos que requieren soberanía total del software y datos.
+          </p>
         </div>
-        <p class="billing-info">
-          Pago único por propiedad intelectual completa.
-        </p>
-      </div>
 
-      <button class="btn-disabled" disabled>Próximamente</button>
+        <div class="price-amount-block">
+          <span class="price-amount price-amount--light">Aún por definir</span>
+          <span class="price-period price-period--light">MXN · Pago único</span>
+        </div>
 
-      <div class="features-list">
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Transferencia de Activos Tecnológicos</span>
+        <div class="price-features">
+          <div class="price-feature price-feature--light">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Transferencia de activos tecnológicos</span>
+          </div>
+          <div class="price-feature price-feature--light">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Implementación on-premise</span>
+          </div>
+          <div class="price-feature price-feature--light">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Documentación técnica completa</span>
+          </div>
+          <div class="price-feature price-feature--light">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Soporte para actualización de datos</span>
+          </div>
         </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Implementación On-Premise (Soberanía de Datos)</span>
-        </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Documentación Técnica y Manuales de Usuario</span>
-        </div>
-        <div class="feature-item">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span>Soporte para actualización de bases de datos locales</span>
-        </div>
+
+        <div class="price-cta price-cta--light">Próximamente disponible</div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .pricing-container {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
+  .pricing-section {
+    padding: 80px 0;
+  }
+
+  /* Header */
+  .pricing-header {
+    margin-bottom: 48px;
   }
 
   .pricing-title {
-    font-size: 3rem;
-    font-weight: 800;
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
   }
 
   .pricing-subtitle {
-    color: var(--text-secondary);
-    margin: 20px auto 60px;
-    max-width: 600px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
   }
 
-  .pricing-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    align-items: stretch;
+  /* Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  .pricing-card {
-    background: #16171a;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 48px;
-    text-align: left;
-    transition: transform 0.3s ease;
+  /* Tarjeta base */
+  .price-card {
+    background: var(--color-bg-card);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
     display: flex;
     flex-direction: column;
+    gap: 28px;
   }
 
-  .pricing-card.featured {
-    border-color: var(--accent-purple);
-    box-shadow: 0 10px 40px rgba(92, 60, 245, 0.1);
+  .price-card--featured {
+    background: var(--color-bg-dark);
+    border-color: var(--color-bg-dark);
   }
 
-  .pricing-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-purple);
+  /* Tipo y nombre */
+  .price-type {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
   }
 
-  .badge {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-secondary);
+  .price-type--light {
+    color: rgba(255, 255, 255, 0.4);
   }
 
-  .badge.purple {
-    background: rgba(92, 60, 245, 0.1);
-    color: #a891ff;
+  .price-name {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
   }
 
-  .plan-name {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin: 24px 0 12px;
+  .price-name--light {
+    color: #fff;
   }
 
-  .plan-description {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 40px;
-    min-height: 3.5rem;
+  .price-desc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
   }
 
-  .price-section {
-    margin-bottom: 40px;
+  .price-desc--light {
+    color: rgba(255, 255, 255, 0.45);
   }
 
-  .price {
+  /* Monto */
+  .price-amount-block {
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
     gap: 4px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--color-border-muted);
   }
 
-  .currency {
-    font-size: 1.5rem;
-    font-weight: 800;
-  }
-  .amount {
-    font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-  }
-  .period {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 600;
+  .price-card--featured .price-amount-block {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
   }
 
-  .billing-info {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    opacity: 0.6;
-    margin-top: 8px;
+  .price-amount {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    line-height: 1;
   }
 
-  .btn-disabled {
-    width: 100%;
-    background: var(--accent-purple);
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: not-allowed;
-    opacity: 0.8;
-    margin-bottom: 40px;
+  .price-amount--light {
+    color: #fff;
   }
 
-  .features-list {
+  .price-period {
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  .price-period--light {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  /* Features */
+  .price-features {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    flex: 1;
   }
 
-  .feature-item {
+  .price-feature {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
   }
 
-  .feature-item svg {
-    width: 18px;
-    height: 18px;
-    color: var(--accent-purple);
+  .price-feature--light {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .price-feature svg {
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
-    margin-top: 3px;
+    margin-top: 2px;
+    color: var(--color-text-primary);
   }
 
-  .feature-item span {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+  .price-feature--light svg {
+    color: rgba(255, 255, 255, 0.55);
   }
 
-  @media (max-width: 480px) {
-    .amount {
-      font-size: 2.5rem;
-    }
+  /* CTA */
+  .price-cta {
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    border: 0.5px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
 
-    .pricing-title {
-      font-size: 2rem;
+  .price-cta--light {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

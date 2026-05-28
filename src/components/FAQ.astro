@@ -4,148 +4,183 @@ const faqs = [
   {
     question: "¿En qué ciudades se puede utilizar Mycelium?",
     answer:
-      "El sistema permite una selección modular; puede procesar la totalidad de una metrópoli o restringir el análisis a un subconjunto específico de municipios del territorio nacional utilizando el Marco Geoestadístico de INEGI.",
+      "El sistema permite una selección modular; puede procesar la totalidad de una metrópoli o restringir el análisis a un subconjunto específico de municipios del territorio nacional, siempre que se cuente con el Marco Geoestadístico oficial del INEGI.",
   },
   {
-    question: "¿Qué algoritmos sustentan la toma de decisiones?",
+    question: "¿Qué algoritmos sustentan el análisis?",
     answer:
-      "La toma de decisiones se sustenta en la inteligencia geoespacial mediante el algoritmo HDBSCAN para el agrupamiento poblacional y el algoritmo de Dijkstra para la optimización de trayectorias sobre grafos viales.",
+      "El motor de análisis combina K-Means para el agrupamiento demográfico y el algoritmo de Dijkstra en su variante multi-source para la optimización de trayectorias sobre el grafo vial filtrado por capacidad de infraestructura.",
   },
   {
     question: "¿El software sustituye los estudios de ingeniería civil?",
     answer:
-      "No. Mycelium es estrictamente un sistema de soporte a la decisión (DSS) para la etapa de prefactibilidad geoespacial. No sustituye estudios de ingeniería civil de detalle, mecánica de suelos, trazo geométrico constructivo o impacto ambiental.",
+      "No. Mycelium es estrictamente un sistema de soporte a la decisión para la etapa de prefactibilidad geoespacial. No sustituye estudios de ingeniería civil de detalle, mecánica de suelos, trazo geométrico constructivo ni impacto ambiental. Su función es proveer evidencia cuantitativa para orientar la decisión de inversión.",
   },
   {
-    question: "¿Qué tan actualizados están los datos de análisis?",
+    question: "¿Qué tan actualizados están los datos?",
     answer:
-      "Utiliza el Censo de Población y Vivienda 2020 y el DENUE 2025. El sistema prioriza la integridad de la fuente oficial y permite la actualización constante de las bases de datos para mitigar riesgos de obsolescencia.",
+      "Utiliza el Censo de Población y Vivienda 2020 y el DENUE 2025 como fuentes primarias. La arquitectura del sistema permite actualizar las bases de datos en cuanto se publiquen nuevos conteos oficiales del INEGI, mitigando riesgos de obsolescencia.",
   },
   {
     question: "¿Cómo garantiza el sistema la equidad social?",
     answer:
-      "Actuamos como un garante de justicia social al integrar el Índice de Rezago Social del CONEVAL. Esto permite que el usuario priorice núcleos de demanda en zonas vulnerables que tradicionalmente serían descartadas bajo ópticas puramente comerciales.",
+      "El Índice de Rezago Social del CONEVAL se integra como capa informativa independiente. Esto permite identificar núcleos de alta demanda que coinciden con zonas de mayor vulnerabilidad social — sectores que un modelo de demanda pura, basado solo en población, tendería a subestimar.",
+  },
+  {
+    question: "¿Por qué se llama Mycelium?",
+    answer:
+      "El nombre hace referencia al micelio, la red subterránea de hongos que conecta árboles y ecosistemas de forma eficiente e invisible. Es una metáfora del problema que resuelve el software: encontrar las conexiones óptimas que una ciudad necesita pero que aún no existen.",
+  },
+  {
+    question: "¿Cuánto tiempo tarda en procesar un análisis completo?",
+    answer:
+      "El motor procesa la Zona Metropolitana de Monterrey completa — 16 municipios, 67 agrupamientos — en aproximadamente 1 a 2 minutos. El mismo análisis de forma manual en herramientas de propósito general como QGIS requeriría semanas de trabajo especializado.",
   },
 ];
 ---
 
-<section class="faq-container" id="faq">
-  <div class="faq-header">
-    <h2 class="faq-title">Preguntas Frecuentes</h2>
-    <p class="faq-subtitle">
-      Si tienes alguna otra duda, no dudes en contactar con nuestro equipo.
-    </p>
-  </div>
+<section class="faq-section" id="faq">
+  <div class="container faq-inner">
+    <div class="faq-header">
+      <p class="section-label">Preguntas frecuentes</p>
+      <h2 class="faq-title">Lo que necesitas saber</h2>
+      <p class="faq-subtitle">
+        Recuerda Mycelium es la tecnología que mueve a quienes más lo
+        necesitan.
+      </p>
+    </div>
 
-  <div class="faq-list">
-    {
-      faqs.map((faq) => (
-        <details class="faq-item">
-          <summary>
-            {faq.question}
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </span>
-          </summary>
-          <div class="faq-answer">
-            <p>{faq.answer}</p>
-          </div>
-        </details>
-      ))
-    }
+    <div class="faq-list">
+      {
+        faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
   </div>
 </section>
 
 <style>
-  .faq-container {
-    padding: 80px 20px;
-    max-width: 800px;
-    margin: 0 auto;
+  .faq-section {
+    padding: 80px 0;
+    background: var(--color-bg-muted);
   }
 
+  .faq-inner {
+    max-width: 720px;
+  }
+
+  /* Header */
   .faq-header {
-    text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
   }
 
   .faq-title {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 16px;
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
   }
 
   .faq-subtitle {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
   }
 
+  /* Lista */
   .faq-list {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.5px solid var(--color-border);
   }
 
   .faq-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
+    border-bottom: 0.5px solid var(--color-border);
   }
 
+  /* Summary */
   summary {
     list-style: none;
-    padding: 32px 0;
+    padding: 22px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
-    transition: color 0.3s ease;
+    gap: 16px;
+    cursor: pointer;
+    user-select: none;
   }
 
   summary::-webkit-details-marker {
     display: none;
   }
 
-  .faq-item:hover summary {
-    color: var(--accent-purple);
+  .faq-question {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    transition: color 0.2s ease;
   }
 
-  .icon {
-    transition: transform 0.3s ease;
-    opacity: 0.5;
+  .faq-item:hover .faq-question {
+    color: var(--color-text-secondary);
   }
 
-  .faq-item[open] .icon {
+  /* Ícono */
+  .faq-icon {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-item[open] .faq-icon {
     transform: rotate(180deg);
-    opacity: 1;
-    color: var(--accent-purple);
+    color: var(--color-text-primary);
   }
 
+  /* Respuesta */
   .faq-answer {
-    padding-bottom: 32px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-size: 1rem;
-    animation: slideIn 0.3s ease-out;
+    padding-bottom: 22px;
+    animation: fadeSlide 0.25s ease-out;
   }
 
-  @keyframes slideIn {
+  .faq-answer p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  @keyframes fadeSlide {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY(-6px);
     }
     to {
       opacity: 1;

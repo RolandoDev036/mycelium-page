@@ -2,104 +2,101 @@
 // Logos.astro
 ---
 
-<section class="logos-container">
-  <p class="logos-title">
-    IMPULSADO POR DATOS OFICIALES Y TECNOLOGÍA OPEN SOURCE
-  </p>
-  <div class="logos-grid">
-    <div
-      class="logo-item"
-      title="Instituto Nacional de Estadística y Geografía"
-    >
-      <img src="/inegi.webp" alt="INEGI" />
-      <span>INEGI</span>
-    </div>
+<div class="logos-strip">
+  <div class="container logos-inner">
+    <span class="logos-label">Datos de</span>
 
-    <div
-      class="logo-item"
-      title="Consejo Nacional de Evaluación de la Política de Desarrollo Social"
-    >
-      <img src="/coneval.webp" alt="CONEVAL" />
-      <span>CONEVAL</span>
-    </div>
+    <div class="logos-grid">
+      <div
+        class="logo-item"
+        title="Instituto Nacional de Estadística y Geografía"
+      >
+        <img src="/inegi.webp" alt="INEGI" />
+        <span>INEGI</span>
+      </div>
 
-    <div class="logo-item" title="OpenStreetMap">
-      <img src="/osm.webp" alt="OpenStreetMap" />
-      <span>OpenStreetMap</span>
-    </div>
+      <div
+        class="logo-item"
+        title="Consejo Nacional de Evaluación de la Política de Desarrollo Social"
+      >
+        <img src="/coneval.webp" alt="CONEVAL" />
+        <span>CONEVAL</span>
+      </div>
 
-    <div class="logo-item" title="QGIS Geographic Information System">
-      <img src="/qgis.webp" alt="QGIS" />
-      <span>QGIS</span>
+      <div class="logo-item" title="OpenStreetMap">
+        <img src="/osm.webp" alt="OpenStreetMap" />
+        <span>OpenStreetMap</span>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <style>
-  .logos-container {
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent; /* Para que se vea la aurora del Layout */
+  .logos-strip {
+    border-top: 0.5px solid var(--color-border);
+    border-bottom: 0.5px solid var(--color-border);
+    padding: 20px 0;
   }
 
-  .logos-title {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    margin-bottom: 40px;
-    opacity: 0.6;
+  .logos-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .logos-label {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .logos-grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 60px;
-    max-width: 1000px;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
   }
 
   .logo-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    filter: grayscale(1) brightness(0.8);
-    opacity: 0.5;
-    transition: all 0.3s ease;
+    gap: 8px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
     cursor: default;
   }
 
   .logo-item:hover {
-    filter: grayscale(0) brightness(1);
-    opacity: 1;
-    transform: translateY(-2px);
+    opacity: 0.85;
   }
 
   .logo-item img {
-    height: 50px;
+    height: 22px;
     width: auto;
   }
 
   .logo-item span {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: white;
-    letter-spacing: -0.02em;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    letter-spacing: -0.01em;
   }
 
-  @media (max-width: 768px) {
-    .logos-grid {
-      gap: 30px;
-    }
-    .logo-item span {
-      display: none;
+  @media (max-width: 640px) {
+    .logos-inner {
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .logos-title {
-      text-align: center;
+    .logo-item span {
+      display: none;
     }
   }
 </style>

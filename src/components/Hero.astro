@@ -1,100 +1,309 @@
 ---
 /**
- * Hero Component - Mycelium Project
- * Presentación principal con énfasis en la visualización de datos geoespaciales.
+ * Hero Component - Mycelium
+ * Layout de dos columnas: copy a la izquierda, visual a la derecha.
  */
 ---
 
-<section class="hero-container" id="start">
-  <div class="hero-content">
-    <h1 class="hero-title">MYCELIUM</h1>
+<section class="hero-section" id="start">
+  <div class="container hero-grid">
+    <!-- Columna izquierda: copy -->
+    <div class="hero-copy">
+      <p class="section-label">Inteligencia geoespacial · DSS urbano</p>
 
-    <p class="hero-subtitle">
-      Sistema de soporte a la decisión para la expansión de redes de metro
-      mediante inteligencia geoespacial y optimización de grafos.
-    </p>
+      <h1 class="hero-title">
+        El metro no llega<br />
+        donde vive <em>la gente.</em><br />
+        Mycelium lo sabe.
+      </h1>
 
-    <div class="interface-preview">
-      <img
-        src="/imagen_inicio.webp"
-        alt="Vista previa de la interfaz de Mycelium"
-        class="main-interface"
-        loading="eager"
-      />
+      <p class="hero-subtitle">
+        Plataforma de soporte a la decisión que identifica núcleos de demanda
+        crítica y traza rutas óptimas de expansión para sistemas de transporte
+        masivo, usando datos oficiales del INEGI.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">Solicitar demostración técnica</a
+        >
+        <a href="#results" class="btn-link">Ver análisis de la ZMM →</a>
+      </div>
+    </div>
+
+    <!-- Columna derecha: visual -->
+    <div class="hero-visual">
+      <!-- Red de nodos SVG -->
+      <svg
+        class="network-svg"
+        viewBox="0 0 400 280"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- Líneas de conexión -->
+        <line
+          x1="100"
+          y1="80"
+          x2="200"
+          y2="130"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"></line>
+        <line
+          x1="200"
+          y1="130"
+          x2="300"
+          y2="90"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"></line>
+        <line
+          x1="200"
+          y1="130"
+          x2="220"
+          y2="200"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1"></line>
+        <line
+          x1="100"
+          y1="80"
+          x2="60"
+          y2="170"
+          stroke="rgba(255,255,255,0.10)"
+          stroke-width="1"></line>
+        <line
+          x1="300"
+          y1="90"
+          x2="340"
+          y2="180"
+          stroke="rgba(255,255,255,0.10)"
+          stroke-width="1"></line>
+        <line
+          x1="220"
+          y1="200"
+          x2="340"
+          y2="180"
+          stroke="rgba(255,255,255,0.10)"
+          stroke-width="1"></line>
+        <line
+          x1="60"
+          y1="170"
+          x2="220"
+          y2="200"
+          stroke="rgba(255,255,255,0.08)"
+          stroke-width="1"></line>
+        <!-- Rutas óptimas destacadas -->
+        <line
+          x1="150"
+          y1="50"
+          x2="200"
+          y2="130"
+          stroke="rgba(255,255,255,0.30)"
+          stroke-width="1.5"
+          stroke-dasharray="4,3"></line>
+        <line
+          x1="60"
+          y1="170"
+          x2="200"
+          y2="130"
+          stroke="rgba(255,255,255,0.25)"
+          stroke-width="1.5"
+          stroke-dasharray="4,3"></line>
+        <line
+          x1="340"
+          y1="180"
+          x2="200"
+          y2="130"
+          stroke="rgba(255,255,255,0.25)"
+          stroke-width="1.5"
+          stroke-dasharray="4,3"></line>
+        <!-- Nodo central -->
+        <circle cx="200" cy="130" r="12" fill="rgba(255,255,255,0.90)"></circle>
+        <circle
+          cx="200"
+          cy="130"
+          r="22"
+          fill="rgba(255,255,255,0.06)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="0.5"></circle>
+        <!-- Nodos secundarios -->
+        <circle cx="100" cy="80" r="7" fill="rgba(255,255,255,0.65)"></circle>
+        <circle cx="300" cy="90" r="7" fill="rgba(255,255,255,0.65)"></circle>
+        <circle cx="220" cy="200" r="7" fill="rgba(255,255,255,0.65)"></circle>
+        <circle cx="60" cy="170" r="6" fill="rgba(255,255,255,0.40)"></circle>
+        <circle cx="340" cy="180" r="6" fill="rgba(255,255,255,0.40)"></circle>
+        <circle cx="150" cy="50" r="5" fill="rgba(255,255,255,0.28)"></circle>
+        <circle cx="250" cy="38" r="4" fill="rgba(255,255,255,0.18)"></circle>
+        <circle cx="370" cy="110" r="4" fill="rgba(255,255,255,0.18)"></circle>
+        <circle cx="38" cy="80" r="3" fill="rgba(255,255,255,0.15)"></circle>
+      </svg>
+
+      <!-- Barra de métricas flotante -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">67</span>
+          <span class="stat-label">Núcleos detectados</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">16.9 km</span>
+          <span class="stat-label">Brecha promedio</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">&lt; 2 min</span>
+          <span class="stat-label">Procesamiento ZMM</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* Contenedor Principal */
-  .hero-container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    padding: 120px 20px 60px 20px;
+  .hero-section {
+    padding-top: 64px; /* altura del nav fijo */
   }
 
-  .hero-content {
-    width: 100%;
-    max-width: 1000px;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    align-items: center;
+  }
+
+  /* Copy */
+  .hero-copy {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    gap: 0;
   }
 
-  /* Tipografía */
   .hero-title {
-    font-size: clamp(3rem, 12vw, 8rem);
-    font-weight: 900;
-    color: #ffffff;
-    margin: 40px 0;
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    margin: 16px 0 20px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--color-text-muted);
   }
 
   .hero-subtitle {
-    color: var(--text-secondary, #b0b0b0);
-    font-size: clamp(1rem, 4vw, 1.25rem);
-    max-width: 650px;
-    margin: 0 0 60px 0;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 420px;
+    margin-bottom: 32px;
   }
 
-  /* Visualización de Interfaz */
-  .interface-preview {
-    position: relative;
-    width: 100%;
-    margin-top: 20px;
+  .hero-actions {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: transparent;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
-  .main-interface {
+  .btn-primary {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-main);
+    background: var(--color-bg-dark);
+    color: var(--color-text-inverse);
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+
+  .btn-link {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  .btn-link:hover {
+    color: var(--color-text-primary);
+  }
+
+  /* Visual */
+  .hero-visual {
+    background: var(--color-bg-dark);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .network-svg {
     width: 100%;
     height: auto;
-    border-radius: 16px;
     display: block;
-    mask-image: linear-gradient(to bottom, black 70%, transparent 98%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 98%);
   }
 
-  /* Ajustes Responsivos (Desktop) */
+  /* Métricas */
+  .hero-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-top: 8px;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .stat-number {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .stat-divider {
+    width: 0.5px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+
+  /* Desktop */
   @media (min-width: 768px) {
-    .hero-container {
-      padding: 160px 40px 80px 40px;
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      gap: 56px;
     }
 
     .hero-title {
-      margin: 80px 0;
+      font-size: clamp(2.2rem, 3.5vw, 2.75rem);
     }
+  }
 
-    .main-interface {
-      border-radius: 24px;
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 55% 45%;
     }
   }
 </style>

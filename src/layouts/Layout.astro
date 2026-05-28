@@ -1,7 +1,6 @@
 ---
 /**
  * Layout Principal - Mycelium
- * Define la estructura base, fuentes y el fondo ambiental del sitio.
  */
 ---
 
@@ -17,12 +16,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@1,400..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="aurora-bg" aria-hidden="true"></div>
     <main>
       <slot />
     </main>
@@ -32,12 +30,29 @@
 <style is:global>
   /* Variables Globales */
   :root {
-    --bg-color: #0b0a0d;
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1a1;
-    --accent-purple: #5c3cf5;
-    --font-main: "Inter", system-ui, sans-serif;
-    --font-accent: "Playfair Display", serif;
+    --color-bg: #fafafa;
+    --color-bg-card: #ffffff;
+    --color-bg-muted: #f4f4f5;
+    --color-bg-dark: #263137;
+
+    --color-text-primary: #263137;
+    --color-text-secondary: #6b7280;
+    --color-text-muted: rgba(38, 49, 55, 0.45);
+    --color-text-inverse: #ffffff;
+
+    --color-border: rgba(38, 49, 55, 0.12);
+    --color-border-muted: rgba(38, 49, 55, 0.08);
+
+    --color-accent: #263137;
+
+    --font-main: "DM Sans", system-ui, sans-serif;
+    --font-serif: "DM Serif Display", serif;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+
+    --max-width: 1120px;
   }
 
   /* Reset y Base */
@@ -45,6 +60,8 @@
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
@@ -52,53 +69,56 @@
   }
 
   body {
-    background-color: var(--bg-color);
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
     font-family: var(--font-main);
-    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    /* Crucial para que nada se escape */
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    position: relative;
+    min-height: 100vh;
   }
 
-  /* Fondo Ambiental (Aurora) */
-  .aurora-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+  /* Contenedor centrado reutilizable */
+  .container {
     width: 100%;
-    height: 800px;
-    background: radial-gradient(
-      circle at 50% -20%,
-      /* Centrado arriba */ rgba(38, 40, 49, 1) 0%,
-      rgba(38, 40, 49, 0.4) 35%,
-      rgba(11, 10, 13, 0) 70%
-    );
-    z-index: -1;
-    pointer-events: none;
-    filter: blur(60px);
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: 32px;
   }
 
-  /* Clases de Utilidad */
-  .logo-font {
-    font-family: var(--font-accent);
-    font-style: italic;
+  /* Tipografía base */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    line-height: 1.15;
+    color: var(--color-text-primary);
   }
 
-  /* Ajuste para pantallas grandes */
-  @media (min-width: 1200px) {
-    .aurora-bg {
-      height: 400px;
-      background: radial-gradient(
-        circle at 50% -10%,
-        rgba(38, 40, 49, 1) 0%,
-        rgba(38, 40, 49, 0.4) 40%,
-        rgba(11, 10, 13, 0) 80%
-      );
-    }
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Etiqueta de sección reutilizable */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
   }
 </style>
